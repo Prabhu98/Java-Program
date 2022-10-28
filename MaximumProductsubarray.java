@@ -5,7 +5,7 @@ public class MaximumProductsubarray {
 	
 	@Test
 	public void td1() {
-		int[] nums = {3,-1,4};
+		int[] nums = {2,3,-2,4};
 		int maxProduct = maxProduct(nums);
 		System.out.println(maxProduct);
 	}
@@ -42,7 +42,7 @@ public class MaximumProductsubarray {
 	
 	   public int maxProduct(int[] nums) {
 	        
-		   int max = Integer.MIN_VALUE;
+       int max = Integer.MIN_VALUE;
 		   
 		   int product =1;
 		   
@@ -53,7 +53,18 @@ public class MaximumProductsubarray {
 				   product =1;
 			   }
 		   }
+        
+           product =1;
+		   
+		   for(int i=nums.length-1;i>=0;i--) {
+			   product *= nums[i];
+			   max = Math.max(product, max);
+			   if(product == 0) {
+				   product =1;
+			   }
+		   }
 		   return max;
 	    }
-}
+	    }
+
 
