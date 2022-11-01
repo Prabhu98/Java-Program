@@ -1,6 +1,8 @@
 package Day31Oct;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -33,7 +35,7 @@ public class IsomorphicString {
 	  public void tc1() {
 		String s ="egg";
 		String t ="add";
-		System.out.println(isIsomorphicHashMap(s,t));
+		System.out.println(isIsomorphic(s,t));
 
 	   }
 	 
@@ -43,7 +45,7 @@ public class IsomorphicString {
 	  public void tc2() {
 		String s ="foo";
 		String t ="bar";
-		System.out.println(isIsomorphicHashMap(s,t));
+		System.out.println(isIsomorphic(s,t));
 
 	   }
 	 
@@ -52,11 +54,11 @@ public class IsomorphicString {
 	  public void tc3() {
 		String s ="paper";
 		String t ="title";
-		System.out.println(isIsomorphicHashMap(s,t));
+		System.out.println(isIsomorphic(s,t));
 
 	   }
 
-	public boolean isIsomorphic(String s, String t) {
+	public boolean isIsomorphicAscII(String s, String t) {
 
 		if (s.length() != t.length())
 			return false;
@@ -78,10 +80,11 @@ public class IsomorphicString {
 
 	}
 	
-	public boolean isIsomorphicHashMap(String s, String t) {
+	public boolean check(String s, String t) {
 
 		if (s.length() != t.length())
 			return false;
+	    
         
         HashMap<Character,Character> hm = new HashMap<>();
         for(int i = 0;i<t.length();i++){
@@ -95,5 +98,9 @@ public class IsomorphicString {
         }
         return true;
 	}
+	
+	 public boolean isIsomorphic(String s, String t) {
+	        return check(s,t) && check(t,s);
+	    }
 
 }
