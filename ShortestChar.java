@@ -8,9 +8,9 @@ public class ShortestChar {
 
 	@Test
 	public static void postive() {
-			String s = "loveleetcode";
-			char c = 'e';
-			int[] shortestchar = shortestToChar(s,c);
+			String s = "leet";
+			char c = 't';
+			int[] shortestchar = shortestToChar1(s,c);
 			System.out.println(Arrays.toString(shortestchar));
 	}
 	
@@ -46,10 +46,35 @@ public class ShortestChar {
 	         return arr;
 	    }
 		
-			
+	public static int[] shortestToChar1(String s, char c)	{
+		
+		int len = s.length();
+		
+		int[] op = new int[len];
+		
+		int index = -len;
+		
+		for(int i=0;i<s.length();i++) {
+			if(s.charAt(i)==c) {
+				index =i;
+			}
+			op[i] = i-index;
+		}
+		
+		for (int i=s.length()-1;i>=0;i--) {
+			if(s.charAt(i) ==c) {
+				index =i;
+			}
+			int value = Math.abs(i-index);
+			op[i] = Math.min(op[i], value);
+		}
+		
+		
+		
+		return op;
 		        
 		   		
-	
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		postive();
