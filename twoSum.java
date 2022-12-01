@@ -1,48 +1,76 @@
-package KadaneAndThreePointerAlogrithm;
+package leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-
-import org.junit.Test;
 
 public class twoSum {
 	
-	@Test
-	public  void negative() {
-		int[] nums = {2,7,11,15};
-		int target =26;
-		int[] twoSum = twoSumValue(nums,target);
-		System.out.println(Arrays.toString(twoSum));
-	}
+	/*
+	 * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+ 
+
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+ 
+	 * 
+	 * 
+	 * 
+	 */
 	
-	public  int[] twoSum(int[] nums, int target) {
-		Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < nums.length; i++) {
-        	int sum = target -nums[i];
-            if(map.containsKey(sum)) {
-                return new int[]{map.get(sum), i};
-            }
-            map.put(nums[i], i);
-        }
-        return new int[]{};
-		 
-	}
-	
-	public  int[] twoSumValue(int[] nums, int target) {
-		HashSet<Integer> hset = new HashSet<>();
+	public static int[] sumtwo(int[] nums , int target) {
 		
-		for(int i=0;i<nums.length;i++) {
-			if(hset.contains(target-nums[i])) {
-				return new int[] {target-nums[i],nums[i]};
-			}else {
-				hset.add(nums[i]);
+		HashMap<Integer,Integer> hmap = new HashMap<Integer,Integer>();
+		
+		for( int i=0;i<nums.length;i++) {
+			int comp = target - nums[i];
+			
+			if(hmap.containsKey(comp)) {
+				return new int[] {hmap.get(comp),i};
 			}
-		}
-		 
-		return null;
+			
+			hmap.put(nums[i], i);
+		}	
+		return nums;
+		
 	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] nums = new int[] {2,7,11,15};
+		
+			int[] result = null;
+			try {
+				result = sumtwo(nums, 9);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(Arrays.toString(result));
+		
+	}
+
 }
-
-
